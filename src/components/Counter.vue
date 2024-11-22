@@ -4,7 +4,9 @@ import { css } from '@styled/css'
 import { storeToRefs } from 'pinia'
 import { useCounterStore } from '@/stores/counter'
 
-const { count } = storeToRefs(useCounterStore())
+const counter = useCounterStore()
+const { count } = storeToRefs(counter)
+const { inc } = counter
 </script>
 
 <template>
@@ -20,7 +22,7 @@ const { count } = storeToRefs(useCounterStore())
           color: 'white'
         })
       "
-      @click="() => count++"
+      @click="() => inc()"
     >
       count is: {{ count }}
     </button>
